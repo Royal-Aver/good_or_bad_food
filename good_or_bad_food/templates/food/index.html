@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+    Good or bad food. Главная
+{% endblock %}
+{% block content %}
+  <h1 class="pb-2 mb-0">Главная страница</h1>
+  <div class="row">
+    {% for product in product_list %}
+      {% include "includes/product_card.html" %}
+    {% endfor %}
+  </div>
+{% endblock %}

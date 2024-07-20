@@ -1,0 +1,19 @@
+{% load static %}
+<div class="col-6 col-md-4 my-1">
+    <div class="card">
+      <img 
+        class="img-fluid card-img-top" 
+        height="400" width="300"
+        src="{% static 'img/image-holder.png' %}"
+      >
+      <div class="card-body">           
+        <h5 class="card-title">{{ product.title }} </h5>
+        <p class="badge bg-secondary">{{ product.price }}</p>
+        <p class="badge bg-secondary">{{ product.rating }}</p>
+        <p class="card-text">{{ product.description|truncatechars:40 }}</p>
+        <a class="mt-3 regular-link" href="{% url 'product:product_detail' product.id %}">
+          Подробнее -->
+        </a>
+      </div>
+    </div>
+  </div>
