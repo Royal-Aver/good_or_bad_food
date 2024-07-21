@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block title %}
     Good or bad food. Product {{ product.title|lower }}
 {% endblock %}
 {% block content %}
-  <h1 class="pb-2 mb-0">{{ product.title }}</h1>  
+  <h1 class="pb-2 mb-0">{{ product.title }}</h1>
   <div class="row mt-3">
     <div class="col-12 col-md-6">
       <h2>Описание</h2>
@@ -18,14 +19,14 @@
       <ul class="list-group list-group-flush">
         {% for composition in product.composition.all %}
           <li class="list-group-item">- {{ product.composition }}</li>
-        {% endfor %}        
+        {% endfor %}
       </ul>
-    </div> 
-    <div class="col-12 col-md-6 mb-3">
-      <img 
-        class="img-fluid" 
-        height="400" width="300"
-        src="{% static 'img/image-holder.png' %}">      
     </div>
-  </div>     
+    <div class="col-12 col-md-6 mb-3">
+      <img
+        class="img-fluid"
+        height="400" width="300"
+        src="{% static 'img/image-holder.png' %}">
+    </div>
+  </div>
 {% endblock %}

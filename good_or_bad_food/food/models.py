@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
@@ -11,28 +12,26 @@ class Product(BaseModel):
         "Цена", max_digits=7, decimal_places=2,
         default=0, blank=True, null=True)
     image = models.ImageField("Изображение", upload_to='product/', blank=True, null=True)
-    category = models.ManyToManyField("Категория", "Category")
-    element = models.ManyToManyField("Элемент", "Element")
-    nutrient = models.OneToOneField("КБЖУ", "Nutrients",
-            on_delete=models.SET_NULL)
+    category = models.ManyToManyField("Category", verbose_name="Категория")
+    element = models.ManyToManyField("Element", verbose_name="Элемент")
+    nutrient = models.OneToOneField("Nutrient", on_delete=models.SET_NULL, null=True, verbose_name="КБЖУ")  # ???
 
 
 class Category(BaseModel):
     title = models.CharField("Категория", max_length=LENGTH_FIELD, unique=True)
 
 
-class Nutrients(models.Model):
+class Nutrient(models.Model):
     calories = models.IntegerField("Калории", default=0, blank=True, null=True)
-    proteins = models.CharField("Белки", default=0, blank=True, null=True)
-    fats = models.CharField("Жиры", default=0, blank=True, null=True)
-    carbohydrates = models.CharField("Углеводы", default=0, blank=True, null=True)
+    proteins = models.IntegerField("Белки", default=0, blank=True, null=True)
+    fats = models.IntegerField("Жиры", default=0, blank=True, null=True)
+    carbohydrates = models.IntegerField("Углеводы", default=0, blank=True, null=True)
 
 
 class Element(BaseModel):
     title = models.CharField("Элемент", max_length=LENGTH_FIELD, unique=True)
-    type = models.ManyToManyField("Тип элемента", "Type")
-    rating = models.OneToOneField("Рейтинг", "Rating",
-                            on_delete=models.SET_NULL)
+    type = models.ManyToManyField("Type", verbose_name="Тип элемента")
+    rating = models.OneToOneField("Rating", on_delete=models.SET_NULL, null=True, verbose_name="Рейтинг")  # ???
 
 
 class Type(BaseModel):

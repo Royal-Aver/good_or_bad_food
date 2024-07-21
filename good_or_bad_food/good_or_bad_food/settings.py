@@ -15,13 +15,8 @@ DEBUG = True
 
 ALLOWED_HOSTS: list = []
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static_dev',
-]
 # Application definition
-
 INSTALLED_APPS = [
-    'food.apps.FoodConfig'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -29,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'bootstrap5',
+    # 'bootstrap5',
     'debug_toolbar',
 
     'food.apps.FoodConfig',
@@ -43,7 +38,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'good_or_bad_food.urls'
@@ -112,12 +107,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static_dev/'
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 INTERNAL_IPS = [
     '127.0.0.1',
