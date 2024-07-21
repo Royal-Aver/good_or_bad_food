@@ -11,7 +11,7 @@ class Product(BaseModel):
     price = models.DecimalField(  # по этому полю вопрос, ведь мы хотим сравнивать цены за период
         "Цена", max_digits=7, decimal_places=2,
         default=0, blank=True, null=True)
-    image = models.ImageField("Изображение", upload_to='product/', blank=True, null=True)
+    image = models.ImageField("Изображение", upload_to='product_images/', blank=True, null=True)
     category = models.ManyToManyField("Category", verbose_name="Категория")
     element = models.ManyToManyField("Element", verbose_name="Элемент")
     nutrient = models.OneToOneField("Nutrient", on_delete=models.SET_NULL, null=True, verbose_name="КБЖУ")  # ???
