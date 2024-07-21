@@ -30,9 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'bootstrap5',
+    'debug_toolbar',
 
     'food.apps.FoodConfig',
-    'debug_toolbar',
 ]
 
 MIDDLEWARE = [

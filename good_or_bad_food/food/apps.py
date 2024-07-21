@@ -1,7 +1,10 @@
+"""Application definition for food."""
+
 from django.apps import AppConfig
 
 
 class FoodConfig(AppConfig):
+    """Application definition for blog."""
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'food'
-    verbose_name = 'Еда'
+    verbose_name = 'Продукты питания'
