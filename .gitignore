@@ -159,3 +159,14 @@ media/
 build_tests/
 yap_testing
 html/img/img/
+food_venv/pyvenv.cfg
+food_venv/Scripts/activate
+food_venv/Scripts/activate.bat
+food_venv/Scripts/Activate.ps1
+food_venv/Scripts/deactivate.bat
+food_venv/Scripts/pip.exe
+food_venv/Scripts/pip3.9.exe
+food_venv/Scripts/pip3.exe
+food_venv/Scripts/python.exe
+food_venv/Scripts/pythonw.exe
+.gitignore

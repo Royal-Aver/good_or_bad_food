@@ -6,7 +6,7 @@
 {% block content %}
   <h1 class="pb-2 mb-0">Product Catalog</h1>
   <div class="row">
-    {% for ice_cream in ice_cream_list %}
+    {% for product in products %}
       {% ifchanged %}
         <div class="row mt-5" id="{{ product.category.slug }}">
           <div class="col-12">
