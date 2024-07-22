@@ -4,7 +4,7 @@
       <img
         class="img-fluid card-img-top"
         height="400" width="300"
-        src="{% static 'img/image-holder.png' %}"
+        src="{{ product.image.url }}"
       >
       <div class="card-body">
         <h5 class="card-title">{{ product.title }} </h5>

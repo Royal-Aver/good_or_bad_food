@@ -13,7 +13,7 @@ urlpatterns = [
         views.category_product,
         name='category_product'),
     path(
-        'product/<slug:product_slug>',
+        'product/<int:product_id>',
         views.product_detail,
         name='product_detail'),
 ]
