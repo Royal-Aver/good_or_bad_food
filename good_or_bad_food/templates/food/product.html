@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Good or bad food. Product {{ product.title|lower }}
+{% endblock %}
+{% block content %}
+  <h1 class="pb-2 mb-0">{{ product.title }}</h1>
+  <div class="row mt-3">
+    <div class="col-12 col-md-6">
+      <h2>Описание</h2>
+      <p>{{ product.description }}</p>
+      <h4>
+        <span class="badge bg-secondary">{{ product.category.rating }}</span>
+        <span class="badge bg-secondary">{{ product.category.title }}</span>
+        <span class="badge bg-dark">{{ product.price }}</span>
+      </h4>
+      <h2>Состав</h2>
+      <ul class="list-group list-group-flush">
+        {% for composition in product.composition.all %}
+          <li class="list-group-item">- {{ product.composition }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-12 col-md-6 mb-3">
+      <img
+        class="img-fluid"
+        height="400" width="300"
+        src="{% static 'img/image-holder.png' %}">
+    </div>
+  </div>
+{% endblock %}
