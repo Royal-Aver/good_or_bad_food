@@ -170,3 +170,6 @@ food_venv/Scripts/pip3.exe
 food_venv/Scripts/python.exe
 food_venv/Scripts/pythonw.exe
 .gitignore
+food_venv/Scripts/django-admin.exe
+food_venv/Scripts/sqlformat.exe
+.gitignore

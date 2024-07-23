@@ -9,7 +9,9 @@
     <title>
       {% block title %}{% endblock %}
     </title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
   </head>
   <body>
     {% include "includes/header.html" %}
