@@ -39,8 +39,18 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'description',
+        'get_products'
     )
 
+
+    def get_products(self, obj):
+        related_products = obj.product_set.all()
+        products = [product.title for product in related_products]
+        return ", ".join(products)
+
+    get_products.short_description = 'Продукты'
+
+    
     prepopulated_fields = {"slug": ("title",)}
 
 
@@ -49,6 +59,7 @@ class PriceAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'date',
+        'product'
     )
 
 

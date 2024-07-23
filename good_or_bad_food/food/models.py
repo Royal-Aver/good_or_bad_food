@@ -19,7 +19,7 @@ class Product(BaseModel):
         "Price",
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name="Цена продукта")
+        verbose_name="Цена продукта, ₽")
     category = models.ManyToManyField(
         "Category",
         verbose_name="Категория")
