@@ -30,7 +30,8 @@ class Product(BaseModel):
         "Nutrient",
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name="КБЖУ")
+        verbose_name="КБЖУ",
+        related_name="product")
 
     class Meta:
         verbose_name = "продукт"
@@ -53,6 +54,9 @@ class Price(models.Model):
     class Meta:
         verbose_name = "цену"
         verbose_name_plural = "цены"
+
+    def __str__(self):
+        return str(self.title)
 
 
 class Category(BaseModel):
@@ -95,6 +99,9 @@ class Nutrient(models.Model):
         verbose_name = "КБЖУ"
         verbose_name_plural = "КБЖУ"
 
+    def __str__(self):
+        return f"Калории: {str(self.calories)}, Белки: {str(self.proteins)}, Жиры: {str(self.fats)}, Углеводы: {str(self.carbohydrates)} | {str(self.product.title)}"
+
 
 class Element(BaseModel):
     title = models.CharField(
@@ -104,7 +111,7 @@ class Element(BaseModel):
     type = models.ManyToManyField(
         "Type",
         verbose_name="Тип элемента")
-    rating = models.OneToOneField(
+    rating = models.ForeignKey(
         "Rating",
         on_delete=models.SET_NULL,
         null=True,
