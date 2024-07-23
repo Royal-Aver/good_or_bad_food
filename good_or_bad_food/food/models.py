@@ -141,7 +141,7 @@ class Rating(BaseModel):
             MinValueValidator(1),
             MaxValueValidator(5)],
             default=0,
-            help_text='Укажите рейтинг элемента от 0 до 100')
+            help_text='Укажите рейтинг элемента от 1 до 5')
 
     class Meta:
         verbose_name = "рейтинг элемента"
