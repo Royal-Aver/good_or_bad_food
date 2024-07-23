@@ -1,4 +1,3 @@
-from tabnanny import verbose
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
@@ -7,41 +6,146 @@ from core.models import BaseModel
 
 
 class Product(BaseModel):
-    title = models.CharField("Продукт", max_length=LENGTH_FIELD, unique=True)
-    price = models.DecimalField(  # по этому полю вопрос, ведь мы хотим сравнивать цены за период
-        "Цена", max_digits=7, decimal_places=2,
-        default=0, blank=True, null=True)
-    image = models.ImageField("Изображение", upload_to='product_images/', blank=True, null=True)
-    category = models.ManyToManyField("Category", verbose_name="Категория")
-    element = models.ManyToManyField("Element", verbose_name="Элемент")
-    nutrient = models.OneToOneField("Nutrient", on_delete=models.SET_NULL, null=True, verbose_name="КБЖУ")  # ???
+    title = models.CharField(
+        "Название продукта",
+        max_length=LENGTH_FIELD,
+        unique=True)
+    image = models.ImageField(
+        "Изображение",
+        upload_to='product_images/',
+        blank=True,
+        null=True)
+    price = models.OneToOneField(
+        "Price",
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name="Цена продукта")
+    category = models.ManyToManyField(
+        "Category",
+        verbose_name="Категория")
+    element = models.ManyToManyField(
+        "Element",
+        verbose_name="Элемент")
+    nutrient = models.OneToOneField(
+        "Nutrient",
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name="КБЖУ")
+
+    class Meta:
+        verbose_name = "продукт"
+        verbose_name_plural = "продукты"
+
+    def __str__(self):
+        return self.title
+
+
+class Price(models.Model):
+    title = models.DecimalField(
+        "Цена",
+        max_digits=7,
+        decimal_places=2,
+        default=0,
+        blank=True,
+        null=True)
+    date = models.DateTimeField("Дата", auto_now_add=True)
+
+    class Meta:
+        verbose_name = "цену"
+        verbose_name_plural = "цены"
 
 
 class Category(BaseModel):
-    title = models.CharField("Категория", max_length=LENGTH_FIELD, unique=True)
+    title = models.CharField(
+        "Название категории",
+        max_length=LENGTH_FIELD,
+        unique=True)
+
+    class Meta:
+        verbose_name = "категорию"
+        verbose_name_plural = "категории"
+
+    def __str__(self):
+        return self.title
 
 
 class Nutrient(models.Model):
-    calories = models.IntegerField("Калории", default=0, blank=True, null=True)
-    proteins = models.IntegerField("Белки", default=0, blank=True, null=True)
-    fats = models.IntegerField("Жиры", default=0, blank=True, null=True)
-    carbohydrates = models.IntegerField("Углеводы", default=0, blank=True, null=True)
+    calories = models.IntegerField(
+        "Калории",
+        default=0,
+        blank=True,
+        null=True)
+    proteins = models.IntegerField(
+        "Белки",
+        default=0,
+        blank=True,
+        null=True)
+    fats = models.IntegerField(
+        "Жиры",
+        default=0,
+        blank=True,
+        null=True)
+    carbohydrates = models.IntegerField(
+        "Углеводы",
+        default=0,
+        blank=True,
+        null=True)
+
+    class Meta:
+        verbose_name = "КБЖУ"
+        verbose_name_plural = "КБЖУ"
 
 
 class Element(BaseModel):
-    title = models.CharField("Элемент", max_length=LENGTH_FIELD, unique=True)
-    type = models.ManyToManyField("Type", verbose_name="Тип элемента")
-    rating = models.OneToOneField("Rating", on_delete=models.SET_NULL, null=True, verbose_name="Рейтинг")  # ???
+    title = models.CharField(
+        "Название элемента",
+        max_length=LENGTH_FIELD,
+        unique=True)
+    type = models.ManyToManyField(
+        "Type",
+        verbose_name="Тип элемента")
+    rating = models.OneToOneField(
+        "Rating",
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name="Рейтинг")
+
+    class Meta:
+        verbose_name = "элемент"
+        verbose_name_plural = "элементы"
+
+    def __str__(self):
+        return self.title
 
 
 class Type(BaseModel):
-    title = models.CharField("Тип элемента", max_length=LENGTH_FIELD, unique=True)
+    title = models.CharField(
+        "Название типа элемента",
+        max_length=LENGTH_FIELD,
+        unique=True)
+
+    class Meta:
+        verbose_name = "тип элемента"
+        verbose_name_plural = "типы элементов"
+
+    def __str__(self):
+        return self.title
 
 
 class Rating(BaseModel):
-    title = models.CharField("Рейтинг", max_length=LENGTH_FIELD, unique=True)
+    title = models.CharField(
+        "Название",
+        max_length=LENGTH_FIELD,
+        unique=True)
     rating_num = models.IntegerField("Рейтинг", validators=[
-            MinValueValidator(0),
-            MaxValueValidator(100)],  # нужно определиться со значениями
+            MinValueValidator(1),
+            MaxValueValidator(5)],
             default=0,
             help_text='Укажите рейтинг элемента от 0 до 100')
+
+    class Meta:
+        verbose_name = "рейтинг элемента"
+        verbose_name_plural = "рейтинг элементов"
+
+    def __str__(self):
+        return self.title
