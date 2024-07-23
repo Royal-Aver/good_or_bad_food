@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    Good or bad food. Product {{ product.title|lower }}
+    Good or bad food. Продукт {{ product.title|lower }}
 {% endblock %}
 {% block content %}
   <h1 class="pb-2 mb-0">Название продукта: {{ product.title }}</h1>
@@ -10,9 +10,31 @@
     <div class="col-12 col-md-6">
       <h2>Описание</h2>
       <p>{{ product.description }}</p>
-        <div>Элементы: {{ elements}}</div>
+        <div>
+        <table class="table">
+          <caption class="caption">Элементы продукта и их рейтинги</caption>
+          <thead>
+            <tr>
+              <th scope="col">Элемент</th>
+              <th scope="col">Рейтинг</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            {% for element, rating in elements.items %}
+             <td scope="row">{{ element }}</td>
+             <td>{{ rating }}</td> 
+            {% endfor %}
+            </tr>
+          </tbody>
+        </table>
+      </div>
         <hr>
-        <div>Категории: {{ categories }}</div>
+        <div>Категории:
+          {% for category in categories %}
+            {{ category  }} 
+          {% endfor %}
+        </div>
         <hr>
         <div>Цена: {{ product.price }}</div>
         <hr>

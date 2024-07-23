@@ -17,14 +17,11 @@ def product_detail(request, product_id):
             'nutrient'
     ).get(pk=product_id)
 
-
     related_categories = product.category.all()
     categories = [category.title for category in related_categories]
 
-
     related_elements = product.element.all()
     elements = {element.title: element.rating.rating_num for element in related_elements}
-
 
     sum_ratings = 0
 
