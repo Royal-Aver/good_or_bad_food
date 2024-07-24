@@ -4,11 +4,11 @@
 {% endblock %}
 {% block content %}
 <h1>Публикации в категории «{{ category.title }}»</h1>
-<p class="mb-5">{{ category.description }}</p>
+<p class="">{{ category.description }}</p>
 {% for product in product_list %}
-  <article class="mb-5">  
+  <article class="">
     {% include "includes/product_card.html" %}
-  </article>   
+  </article>
 {% endfor %}
 
 {% endblock %}

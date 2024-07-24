@@ -334,3 +334,20 @@ position: relative;
 .swiper-button-next:after {
   content: none;
 } */
+
+
+
+/* product-detail */
+.product {
+  color: black
+}
+
+.product__title {
+  text-align: center;
+}
+
+.product__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
