@@ -17,12 +17,12 @@
         </button>
 
         <ul class="category-menu__submenu">
-            {% for category in categories %}
+            {% comment %} {% for category in categories %} {% endcomment %}
                 <li class="category-menu__item">
                   {% comment %} {{ category.title }} {% endcomment %}
-                    <a class="category-menu__link" href="{% url "food:category_product" category.slug %}">{{ category.title }}</a>
+                    {% comment %} <a class="category-menu__link" href="{% url "food:category_product" category.slug %}">{{ category.title }}</a> {% endcomment %}
                 </li>
-            {% endfor %}
+            {% comment %} {% endfor %} {% endcomment %}
         </ul>
       </div>
 

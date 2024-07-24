@@ -5,9 +5,9 @@ from .constant_value import NUMS_OF_POSTS_MAIN
 
 
 def index(request):
-    products = Product.objects.all()[:NUMS_OF_POSTS_MAIN]
-
-    categories = Category.objects.all()
+    for i in range(1, 4):
+        categories = get_object_or_404(Category, id=i)
+        products = categories.product_set.all()[1:4]
 
     context = {
         'products': products,

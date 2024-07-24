@@ -10,8 +10,17 @@
   <div class="swiper-wrapper">
     <div class="swiper-slide swiper-slide--green">
       <div class="container swiper-container">
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid cumque nesciunt dignissimos blanditiis commodi reprehenderit repellendus recusandae eius quas enim maxime dicta corrupti incidunt molestiae id, neque quisquam amet consequuntur.</p>
-        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+        <h2 class="swiper-slide__title">{{ categories.0 }}</h2>
+        <ul class="swiper-slide__list">
+          {% for product in products %}
+            <li class="swiper-slide__item card-swiper">
+              <img class="card-swiper__img" src="{{ product.image.url }}" alt="{{ product.title }}">
+              <h2 class="card-swiper__title">{{ product.title }}</h2>
+              <p class="card-swiper__subtitle">{{ product.description|truncatechars:80 }}</p>
+              <a class="card-swiper__link" href="">Подробней</a>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
 
