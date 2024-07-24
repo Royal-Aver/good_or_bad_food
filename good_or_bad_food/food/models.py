@@ -103,9 +103,9 @@ class Nutrient(models.Model):
         return f"""Калории: {str(self.calories)},
                    Белки: {str(self.proteins)},
                    Жиры: {str(self.fats)},
-                   Углеводы: {str(self.carbohydrates)} 
-                   | 
-                   {str(self.product.title)}"""
+                   Углеводы: {str(self.carbohydrates)}
+                   |
+                 """
 
 
 class Element(BaseModel):

@@ -1,5 +1,4 @@
 {% load static %}
-<<<<<<< HEAD
 <header class="header">
   <div class="header__container container">
     <div class="header__inner">
@@ -20,8 +19,8 @@
         <ul class="category-menu__submenu">
             {% for category in categories %}
                 <li class="category-menu__item">
-                  {{ category.title }}
-                    {% comment %} <a class="category-menu__link" href="{% url "food:category" category.slug %}">{{ category.title }}</a> {% endcomment %}
+                  {% comment %} {{ category.title }} {% endcomment %}
+                    <a class="category-menu__link" href="{% url "food:category_product" category.slug %}">{{ category.title }}</a>
                 </li>
             {% endfor %}
         </ul>
