@@ -19,7 +19,7 @@ class Product(BaseModel):
         "Price",
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name="Цена продукта")
+        verbose_name="Цена продукта, ₽")
     category = models.ManyToManyField(
         "Category",
         verbose_name="Категория")
@@ -100,7 +100,12 @@ class Nutrient(models.Model):
         verbose_name_plural = "КБЖУ"
 
     def __str__(self):
-        return f"Калории: {str(self.calories)}, Белки: {str(self.proteins)}, Жиры: {str(self.fats)}, Углеводы: {str(self.carbohydrates)} | {str(self.product.title)}"
+        return f"""Калории: {str(self.calories)},
+                   Белки: {str(self.proteins)},
+                   Жиры: {str(self.fats)},
+                   Углеводы: {str(self.carbohydrates)} 
+                   | 
+                   {str(self.product.title)}"""
 
 
 class Element(BaseModel):
