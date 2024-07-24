@@ -1,9 +1,47 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block title %}
     Good or bad food. Главная
 {% endblock %}
 {% block content %}
-  <h1 class="pb-2 mb-0">Главная страница</h1>
+
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide swiper-slide--green">
+      <div class="container swiper-container">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid cumque nesciunt dignissimos blanditiis commodi reprehenderit repellendus recusandae eius quas enim maxime dicta corrupti incidunt molestiae id, neque quisquam amet consequuntur.</p>
+        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+      </div>
+    </div>
+
+    <div class="swiper-slide swiper-slide--red">
+      <div class="container swiper-container">
+        <p>Картельные сговоры не допускают ситуации, при которой базовые сценарии поведения пользователей, превозмогая сложившуюся непростую экономическую ситуацию, описаны максимально подробно. Есть над чем задуматься: непосредственные участники технического прогресса превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Современные технологии достигли такого уровня, что разбавленное изрядной долей эмпатии, рациональное мышление, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для как самодостаточных, так и внешне зависимых концептуальных решений.</p>
+        <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+      </div>
+    </div>
+    <div class="swiper-slide swiper-slide--blue">
+      <div class="container swiper-container">
+        <p>А также ключевые особенности структуры проекта объявлены нарушающими общечеловеческие нормы этики и морали. Картельные сговоры не допускают ситуации, при которой непосредственные участники технического прогресса лишь добавляют фракционных разногласий и превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. С учётом сложившейся международной обстановки, глубокий уровень погружения, в своём классическом представлении, допускает внедрение системы обучения кадров, соответствующей насущным потребностям.</p>
+        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+      </div>
+    </div>
+    <div class="swiper-slide swiper-slide--yellow">
+      <div class="container swiper-container">
+        <p>Имеется спорная точка зрения, гласящая примерно следующее: действия представителей оппозиции набирают популярность среди определенных слоев населения, а значит, должны быть подвергнуты целой серии независимых исследований. Повседневная практика показывает, что современная методология разработки однозначно фиксирует необходимость системы массового участия. Каждый из нас понимает очевидную вещь: высокотехнологичная концепция общественного уклада требует определения и уточнения системы обучения кадров, соответствующей насущным потребностям.</p>
+        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+      </div>
+    </div>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+
+
+  {% comment %} <h1 class="pb-2 mb-0">Главная страница</h1>
     <div class="container py-5">
       <div id="carouselExampleCaptions" class="carousel slide">
           <div class="carousel-indicators">
@@ -31,5 +69,5 @@
             <span class="visually-hidden">Следующий</span>
           </button>
         </div>
-  </div>
+  </div> {% endcomment %}
 {% endblock %}

@@ -7,7 +7,14 @@ from .constant_value import NUMS_OF_POSTS_MAIN
 def index(request):
     products = Product.objects.all()[:NUMS_OF_POSTS_MAIN]
 
-    return render(request, 'food/index.html', {'products': products})
+    categories = Category.objects.all()
+
+    context = {
+        'products': products,
+        'categories': categories
+    }
+
+    return render(request, 'food/index.html', context)
 
 
 def product_detail(request, product_id):
