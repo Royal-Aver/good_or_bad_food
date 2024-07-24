@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block title %}
     Good or bad food. Каталог продуктов
 {% endblock %}
 {% block content %}
-  <h1 class="pb-2 mb-0">Product Catalog</h1>
-  <div class="row">
-    {% for product in products %}
+  <h1 class="">Product category</h1>
+  <div class="">
+    {% for product in product_list %}
       {% ifchanged %}
-        <div class="row mt-5" id="{{ product.category.slug }}">
-          <div class="col-12">
-            <h3>{{ product.category.title }}</h3>
+        <div class="">
+          <div class="">
+            <h3>{{ product.title }}</h3>
           </div>
         </div>
       {% endifchanged %}

@@ -5,9 +5,16 @@ from .constant_value import NUMS_OF_POSTS_MAIN
 
 
 def index(request):
-    products = Product.objects.all()[:NUMS_OF_POSTS_MAIN]
+    for i in range(1, 4):
+        categories = get_object_or_404(Category, id=i)
+        products = categories.product_set.all()[1:4]
 
-    return render(request, 'food/index.html', {'products': products})
+    context = {
+        'products': products,
+        'categories': categories
+    }
+
+    return render(request, 'food/index.html', context)
 
 
 def product_detail(request, product_id):
@@ -16,13 +23,30 @@ def product_detail(request, product_id):
             'element',
             'nutrient'
     ).get(pk=product_id)
-    return render(request, 'food/product.html', {'product': product})
 
 
-#def get_product_list(request):
-    #product_list = Product.objects.all().filter(
-        
-    #)
+    related_categories = product.category.all()
+    categories = [category.title for category in related_categories]
+
+
+    related_elements = product.element.all()
+    elements = {element.title: element.rating.rating_num for element in related_elements}
+
+
+    sum_ratings = 0
+
+    for value in elements.values():
+        sum_ratings += int(value)
+    avg_rating_product = sum_ratings / len(elements)
+
+    context = {
+        'product': product,
+        'categories': categories,
+        'elements': elements,
+        'rating': avg_rating_product
+    }
+
+    return render(request, 'food/product.html', context)
 
 
 def category_product(request, category_slug):
@@ -34,12 +58,12 @@ def category_product(request, category_slug):
         'id',
         'title',
         'price',
-        'rating',
         'description'
-    ).select_related(
-        category=category
     )
+
+    # product_list = Product.objects.all()
+
     return render(
         request,
-        'templates/category.html',
+        'food/product_list.html',
         {'category': category, 'product_list': product_list})

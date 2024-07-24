@@ -1,12 +1,91 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block title %}
     Good or bad food. Главная
 {% endblock %}
 {% block content %}
-  <h1 class="pb-2 mb-0">Главная страница</h1>
-  <div class="row">
-    {% for product in products %}
-      {% include "includes/product_card.html" %}
-    {% endfor %}
+
+{% comment %} <div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide swiper-slide--green">
+      <div class="container swiper-container">
+        <h2 class="swiper-slide__title">{{ categories.0 }}</h2>
+        <div class="swiper-slide__list">
+            <div class="swiper-slide card-swiper">
+              {% for product in products %}
+              <div class="card-swiper__card">
+                <img class="card-swiper__img" src="{{ product.image.url }}" alt="{{ product.title }}">
+              <h2 class="card-swiper__title">{{ product.title }}</h2>
+              <p class="card-swiper__subtitle">{{ product.description|truncatechars:80 }}</p>
+              <a class="card-swiper__link" href="">Подробней</a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div> {% endcomment %}
+
+    <div class="swiper">
+      {% comment %} <h2 class="swiper-title">Наши карточки</h2> {% endcomment %}
+      <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <h2 class="swiper-slide__title">Лучшее в категории {{ categories|lower }}</h2>
+            <div class="swiper-slide__inner">
+            {% for product in products %}
+              <div class="card_swiper-card">
+                <img class="card-swiper__img" src="{{ product.image.url }}" alt="{{ product.title }}">
+                <h2 class="card-swiper__title">{{ product.title }}</h2>
+                <p class="card-swiper__subtitle">{{ product.description|truncatechars:80 }}</p>
+                <a class="card-swiper__link" href="">Подробней</a>
+              </div>
+            {% endfor %}
+          </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="card_swiper-card">
+                  <img src="https://via.placeholder.com/300" alt="Card Image" class="card-swiper__img">
+                  <h3 class="card-swiper__title">Заголовок 2</h3>
+                  <p class="card-swiper__subtitle">Описание карточки 2</p>
+                  <a href="#" class="card-swiper__link">Подробней</a>
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="card_swiper-card">
+                  <img src="https://via.placeholder.com/300" alt="Card Image" class="card-swiper__img">
+                  <h3 class="card-swiper__title">Заголовок 3</h3>
+                  <p class="card-swiper__subtitle">Описание карточки 3</p>
+                  <a href="#" class="card-swiper__link">Подробней</a>
+              </div>
+          </div>
+      </div>
+
+      <!-- Добавляем навигацию -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
   </div>
+
+    {% comment %} <div class="swiper-slide swiper-slide--red">
+      <div class="container swiper-container">
+        <p>Картельные сговоры не допускают ситуации, при которой базовые сценарии поведения пользователей, превозмогая сложившуюся непростую экономическую ситуацию, описаны максимально подробно. Есть над чем задуматься: непосредственные участники технического прогресса превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Современные технологии достигли такого уровня, что разбавленное изрядной долей эмпатии, рациональное мышление, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для как самодостаточных, так и внешне зависимых концептуальных решений.</p>
+        <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+      </div>
+    </div>
+    <div class="swiper-slide swiper-slide--blue">
+      <div class="container swiper-container">
+        <p>А также ключевые особенности структуры проекта объявлены нарушающими общечеловеческие нормы этики и морали. Картельные сговоры не допускают ситуации, при которой непосредственные участники технического прогресса лишь добавляют фракционных разногласий и превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. С учётом сложившейся международной обстановки, глубокий уровень погружения, в своём классическом представлении, допускает внедрение системы обучения кадров, соответствующей насущным потребностям.</p>
+        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+      </div>
+    </div>
+    <div class="swiper-slide swiper-slide--yellow">
+      <div class="container swiper-container">
+        <p>Имеется спорная точка зрения, гласящая примерно следующее: действия представителей оппозиции набирают популярность среди определенных слоев населения, а значит, должны быть подвергнуты целой серии независимых исследований. Повседневная практика показывает, что современная методология разработки однозначно фиксирует необходимость системы массового участия. Каждый из нас понимает очевидную вещь: высокотехнологичная концепция общественного уклада требует определения и уточнения системы обучения кадров, соответствующей насущным потребностям.</p>
+        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+      </div>
+    </div>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div> {% endcomment %}
 {% endblock %}
