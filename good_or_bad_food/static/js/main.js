@@ -1,4 +1,4 @@
-var swiper = new Swiper(".mySwiper", {
+const swiper = new Swiper(".swiper", {
   spaceBetween: 30,
   effect: "fade",
   // autoplay: {

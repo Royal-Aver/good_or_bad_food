@@ -6,25 +6,66 @@
 {% endblock %}
 {% block content %}
 
-<div class="swiper mySwiper">
+{% comment %} <div class="swiper mySwiper">
   <div class="swiper-wrapper">
     <div class="swiper-slide swiper-slide--green">
       <div class="container swiper-container">
         <h2 class="swiper-slide__title">{{ categories.0 }}</h2>
-        <ul class="swiper-slide__list">
-          {% for product in products %}
-            <li class="swiper-slide__item card-swiper">
-              <img class="card-swiper__img" src="{{ product.image.url }}" alt="{{ product.title }}">
+        <div class="swiper-slide__list">
+            <div class="swiper-slide card-swiper">
+              {% for product in products %}
+              <div class="card-swiper__card">
+                <img class="card-swiper__img" src="{{ product.image.url }}" alt="{{ product.title }}">
               <h2 class="card-swiper__title">{{ product.title }}</h2>
               <p class="card-swiper__subtitle">{{ product.description|truncatechars:80 }}</p>
               <a class="card-swiper__link" href="">Подробней</a>
-            </li>
+              </div>
+            </div>
           {% endfor %}
-        </ul>
+        </div>
       </div>
-    </div>
+    </div> {% endcomment %}
 
-    <div class="swiper-slide swiper-slide--red">
+    <div class="swiper">
+      {% comment %} <h2 class="swiper-title">Наши карточки</h2> {% endcomment %}
+      <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <h2 class="swiper-slide__title">Лучшее в категории {{ categories|lower }}</h2>
+            <div class="swiper-slide__inner">
+            {% for product in products %}
+              <div class="card_swiper-card">
+                <img class="card-swiper__img" src="{{ product.image.url }}" alt="{{ product.title }}">
+                <h2 class="card-swiper__title">{{ product.title }}</h2>
+                <p class="card-swiper__subtitle">{{ product.description|truncatechars:80 }}</p>
+                <a class="card-swiper__link" href="">Подробней</a>
+              </div>
+            {% endfor %}
+          </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="card_swiper-card">
+                  <img src="https://via.placeholder.com/300" alt="Card Image" class="card-swiper__img">
+                  <h3 class="card-swiper__title">Заголовок 2</h3>
+                  <p class="card-swiper__subtitle">Описание карточки 2</p>
+                  <a href="#" class="card-swiper__link">Подробней</a>
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="card_swiper-card">
+                  <img src="https://via.placeholder.com/300" alt="Card Image" class="card-swiper__img">
+                  <h3 class="card-swiper__title">Заголовок 3</h3>
+                  <p class="card-swiper__subtitle">Описание карточки 3</p>
+                  <a href="#" class="card-swiper__link">Подробней</a>
+              </div>
+          </div>
+      </div>
+
+      <!-- Добавляем навигацию -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+  </div>
+
+    {% comment %} <div class="swiper-slide swiper-slide--red">
       <div class="container swiper-container">
         <p>Картельные сговоры не допускают ситуации, при которой базовые сценарии поведения пользователей, превозмогая сложившуюся непростую экономическую ситуацию, описаны максимально подробно. Есть над чем задуматься: непосредственные участники технического прогресса превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Современные технологии достигли такого уровня, что разбавленное изрядной долей эмпатии, рациональное мышление, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для как самодостаточных, так и внешне зависимых концептуальных решений.</p>
         <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
@@ -46,5 +87,5 @@
   <div class="swiper-button-next"></div>
   <div class="swiper-button-prev"></div>
   <div class="swiper-pagination"></div>
-</div>
+</div> {% endcomment %}
 {% endblock %}
