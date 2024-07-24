@@ -15,6 +15,8 @@ DEBUG = True
 
 ALLOWED_HOSTS: list = []
 
+AUTH_USER_MODEL = 'users.CommonUser'
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -28,6 +30,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     'food.apps.FoodConfig',
+    'users.apps.UsersConfig'
 ]
 
 MIDDLEWARE = [
