@@ -100,7 +100,12 @@ class Nutrient(models.Model):
         verbose_name_plural = "КБЖУ"
 
     def __str__(self):
-        return f"Калории: {str(self.calories)}, Белки: {str(self.proteins)}, Жиры: {str(self.fats)}, Углеводы: {str(self.carbohydrates)} | {str(self.product.title)}"
+        return f"""Калории: {str(self.calories)},
+                   Белки: {str(self.proteins)},
+                   Жиры: {str(self.fats)},
+                   Углеводы: {str(self.carbohydrates)} 
+                   | 
+                   {str(self.product.title)}"""
 
 
 class Element(BaseModel):

@@ -6,7 +6,16 @@ from .models import Product, Category, Price, Nutrient, Element, Type, Rating
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    fields = ('title', 'slug', 'description', 'image', 'price', 'category', 'element', 'nutrient')
+    fields = (
+        'title',
+        'slug',
+        'description',
+        'image',
+        'price',
+        'category',
+        'element',
+        'nutrient'
+    )
 
     list_display = (
         'title',
@@ -42,7 +51,6 @@ class CategoryAdmin(admin.ModelAdmin):
         'get_products'
     )
 
-
     def get_products(self, obj):
         related_products = obj.product_set.all()
         products = [product.title for product in related_products]
@@ -50,7 +58,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
     get_products.short_description = 'Продукты'
 
-    
     prepopulated_fields = {"slug": ("title",)}
 
 
